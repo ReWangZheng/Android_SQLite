@@ -10,4 +10,20 @@
         android:text="创建数据库"
         />
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="增加数据"
+
+        />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="更新数据库"
+
+        />
+
 </LinearLayout>
