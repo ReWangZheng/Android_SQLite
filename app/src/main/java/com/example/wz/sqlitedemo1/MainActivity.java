@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         Button button=(Button)findViewById(R.id.button1);
         button.setOnClickListener(new View.OnClickListener() {
              public void onClick(View v) {
-                 DatabaseHelper helper=new DatabaseHelper(MainActivity.this,"dbStu",null,1);
+                 DatabaseHelper helper=new DatabaseHelper(MainActivity.this,"dbStu",null,4);
                 helper.getWritableDatabase();
             }
         });

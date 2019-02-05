@@ -9,3 +9,11 @@ getReadableDatabase()、getWriteDatabase()方法，这两个方法都可以创�
 ## 使用adb来管理SQLite数据库
 
 我们配置好环境变量之后，在命令行中输入adb shell即可，然后我们可以看到当前连接设备的/dev，然后我们进入数据库表存储位置/data/data/<package name>/databases/目录下即可，只需要用sqlite3 数据库名 就可以进入这个数据库，我们可以使用.table来查看已经创建了的表,还可以用.schema命令查看建表语句,输入.exit 或者.quit就可以退出数据库的编辑
+
+## 数据库的升级
+  我们知道的，SQLiteOpenHelper类里我们要重写 **onCreate()** 方法和**onUpgrade()** 方法，**onCreate()** 方法会在数据库第一次创建的时候使用，那么 ** onUpgrade()** 方法则是在数据库版本更新的时候调用。而不会调用 **onCreate() ** 
+
+
+
+
+

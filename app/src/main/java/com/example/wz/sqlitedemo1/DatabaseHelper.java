@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String SQL="create table Book(id integer primary key autoincrement,author text,price real,pages integer,name text)";
-
+    public static final String SQL2="create table Cal(name text,clas text)";
     private Context mcontext;
     public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory,int version)
     {
@@ -23,11 +23,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL);
-        Toast.makeText(mcontext, "创建成功！", Toast.LENGTH_SHORT).show();
+        db.execSQL(SQL2);
+        Toast.makeText(mcontext, "oncreate使用成功！", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("drop table if exists Book");
+        db.execSQL("drop table if exists Cal");
+        Toast.makeText(mcontext, "即将在onUpgrade里面使用onCreate()", Toast.LENGTH_SHORT).show();
+
+        onCreate(db);
+        Toast.makeText(mcontext, "onUpgrade使用成功！", Toast.LENGTH_SHORT).show();
 
     }
 
