@@ -12,6 +12,28 @@ getReadableDatabase()、getWriteDatabase()方法，这两个方法都可以创�
 
 ## 数据库的升级
   我们知道的，SQLiteOpenHelper类里我们要重写 **onCreate()** 方法和**onUpgrade()** 方法，**onCreate()** 方法会在数据库第一次创建的时候使用，那么 **onUpgrade()** 方法则是在数据库版本更新的时候调用。而不会调用 **onCreate()** 
+## SQLite数据的CRUD
+		我们知道，我们使用SQLiteOpenHelper类中的方法getReadableDatabase()或者getWritableDatabase()方法，满足一定条件的情况下，是会创建或者升级数据的，同时这个数据库会返回一个SQLiteDatabase对象，我们可以通过这个对象进行数据库的增删改。
+1.	添加数据
+  使用SQLiteDatabase对象的insert(“String“,null,ContentValues)方法,这个方法第一个参数就是我们要添加数据的表名，第二参数就是若是没有提供数据的情况下给某些可空的列自动赋值，第三个参数就是行数据的封装对象。我们可以使用ContentValues对象的put()方法，来封装数据。
+2.	更新表内容
+     更新数据库使用的方法就是 update(String,ContenteView,String,String[]),有四个参数，第一个参数就是你要更新的表名，第二参数就是要更改的数据的封装，第三个参数就是进行update tablename set var1=? Var2=? Where …，where后面的参数，来进行筛选用的,第三个参数就是为？赋值的，有多少？号，数组元素就应该由多少。
+3.	删除表内容
+删除表内容跟更新表内容差不多，要用到的方法就是delete(String ,String,String),第一个参数也是表名，二、三参数就是限制删哪一行的数据。
+4.	查询数据
+数据的查询可以说是安卓里面最复杂的了，使用的方法是query()，最少也得有七个参数，使用之后会返回一个Cursor对象，这个对象封装了查询得到的数据。
+
+## 使用SQL操作数据库
+1.	添加数据的方法：
+db.execSQL(“insert into Book(x,x,x) values(?,?,?)”,new String[] {“x”,”x”,”x”});
+2.	更新数据的方法
+db,execSQL(“update Book set xxx=? Where name=?”,new String[]{“x”,”x”});
+
+3.	删除数据的方法
+db.execSQL(“delete from Book where x=?”,new String[]{“x”});
+4.	查询数据的方法
+db.rawQuery(“select * from Book”,new String[]{}(相当于Null));
+
 
 
 
